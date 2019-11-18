@@ -1,92 +1,142 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
-  >
-    <v-flex
-      xs12
-      sm8
-      md6
-    >
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
-      </div>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-            >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
+  <div class="home">
+    <img class="logo" src="../static/img/logo-main.png" alt="ロゴ" />
+    <v-row no-gutters v-if="$vuetify.breakpoint.xsOnly">
+      <v-col
+        v-for="(item, index) in topItems"
+        :key="`first-${index}`"
+        cols="4"
+        style="height: calc(calc(100vh - 56px) / 3)"
+      >
+        <v-hover v-slot:default="{ hover }">
+          <v-card
+            outlined
+            tile
+            :style="{ backgroundColor: item.color }"
+            :to="item.link"
+            style="height: 100%; position: relative; border: none;"
           >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
+            <p class="top-text">
+              {{ item.name }}
+            </p>
+          </v-card>
+        </v-hover>
+      </v-col>
+    </v-row>
+    <v-row no-gutters v-else>
+      <v-col
+        v-for="(item, index) in topItems"
+        :key="`second-${index}`"
+        cols="4"
+        style="height: calc((100vh - 56px) / 3)"
+      >
+        <v-hover v-slot:default="{ hover }">
+          <v-card
+            outlined
+            tile
+            :style="{ backgroundColor: item.color }"
+            :to="item.link"
+            style="height: 100%; border: none; background-size: cover;"
           >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+            <v-expand-transition>
+              <div
+                v-if="hover"
+                class="d-flex transition-fast-in-fast-out brown darken-2 v-card--reveal display-2 white--text"
+                style="height: 100%;"
+              >
+                {{ item.name }}
+              </div>
+            </v-expand-transition>
+          </v-card>
+        </v-hover>
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import Logo from "~/components/Logo.vue";
+import VuetifyLogo from "~/components/VuetifyLogo.vue";
 
 export default {
   components: {
     Logo,
     VuetifyLogo
+  },
+  data() {
+    return {
+      topItems: [
+        {
+          name: "TOP",
+          color: "#dcb6c6",
+          link: "/"
+        },
+        {
+          name: "ABOUT",
+          color: "#a5c1c2",
+          link: "/about"
+        },
+        {
+          name: "MEMBER",
+          color: "#f4b684",
+          link: "/member"
+        },
+        {
+          name: "CONTACT",
+          color: "#82b783",
+          link: "/contact"
+        },
+        {
+          name: "NEWS",
+          color: "#a1994c",
+          link: "/news"
+        },
+        {
+          name: "NEWS",
+          color: "#8392b4",
+          link: "/news"
+        },
+        {
+          name: "NEWS",
+          color: "#f2ddb2",
+          link: "/news"
+        },
+        {
+          name: "NEWS",
+          color: "#ad9089",
+          link: "/news"
+        },
+        {
+          name: "GALLERY",
+          color: "#e68888",
+          link: "/gallery"
+        }
+      ]
+    };
   }
-}
+};
 </script>
+<style scoped lang="scss">
+.home {
+  position: relative;
+}
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  z-index: 2;
+  width: 50%;
+  min-width: 200px;
+  max-width: 400px;
+  pointer-events: none;
+}
+.v-card--reveal {
+  align-items: center;
+  bottom: 0;
+  justify-content: center;
+  opacity: .5;
+  position: absolute;
+  width: 100%;
+}
+</style>
