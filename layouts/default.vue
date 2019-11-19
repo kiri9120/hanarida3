@@ -37,9 +37,10 @@
       </v-btn> -->
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <!-- <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn> -->
+      <v-btn text href="https://hanarida-store.com/">
+        <span class="mr-2">SHOP</span>
+        <v-icon>mdi-shopping-outline</v-icon>
+      </v-btn>
     </v-app-bar>
     <v-content>
       <nuxt />
@@ -85,3 +86,9 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+  .headline-type1 {
+    font-size: 6rem;
+    font-family: 'Shadows Into Light', cursive;
+  }
+</style>
