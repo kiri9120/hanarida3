@@ -139,4 +139,8 @@ export default {
   position: absolute;
   width: 100%;
 }
+.top-text {
+  color: #fff;
+  padding: 10px 0 0 10px;
+}
 </style>
