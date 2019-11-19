@@ -41,7 +41,7 @@
             <v-expand-transition>
               <div
                 v-if="hover"
-                class="d-flex transition-fast-in-fast-out brown darken-2 v-card--reveal display-2 white--text"
+                class="d-flex transition-fast-in-fast-out grey darken-2 v-card--reveal display-2 white--text"
                 style="height: 100%;"
               >
                 {{ item.name }}
@@ -92,6 +92,16 @@ export default {
           link: "/news"
         },
         {
+          name: "WORKS",
+          color: "#ad9089",
+          link: "/works"
+        },
+        {
+          name: "GALLERY",
+          color: "#e68888",
+          link: "/gallery"
+        },
+        {
           name: "NEWS",
           color: "#8392b4",
           link: "/news"
@@ -100,16 +110,6 @@ export default {
           name: "NEWS",
           color: "#f2ddb2",
           link: "/news"
-        },
-        {
-          name: "NEWS",
-          color: "#ad9089",
-          link: "/news"
-        },
-        {
-          name: "GALLERY",
-          color: "#e68888",
-          link: "/gallery"
         }
       ]
     };
